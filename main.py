@@ -1,23 +1,14 @@
-import pyglet # import the library
-window = pyglet.window.Window() # create the window
+import pyglet
+window = pyglet.window.Window()
 
-# Create some text
-# label = pyglet.text.Label('Hello, world', x = 200, y = 200)
-
-# Create a sprite
-ball_image = pyglet.image.load('assets/hero/Old hero.png')
-ball = pyglet.sprite.Sprite(ball_image, x=50, y=50)
-
-def update(dt):
-    ball.x += 1
-
-# Start the event loop
+label = pyglet.text.Label('Hello, world',
+                          font_name='Times New Roman',
+                          font_size=36,
+                          x=window.width//2, y=window.height//2,
+                          anchor_x='center', anchor_y='center')
 @window.event
 def on_draw():
     window.clear()
-    ball.draw()
+    label.draw()
 
-
-
-pyglet.clock.schedule(update)
 pyglet.app.run()
