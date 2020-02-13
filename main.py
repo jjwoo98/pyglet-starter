@@ -1,16 +1,22 @@
-import pyglet
-window = pyglet.window.Window()
+import pyglet # import the library
+win = pyglet.window.Window() # create the window
 
-label = pyglet.text.Label('Title Card',
-                          font_name='Times New Roman',
-                          font_size=36,
-                          x=window.width//2, y=window.height//2,
-                          anchor_x='center', anchor_y='center')
-@window.event
+# Load the image
+img = pyglet.image.load('assets/hero/Old hero.png')
+
+# spr = pyglet.sprite.Sprite(img, x=50, y=50)
+
+# Start the event loop
+def update(dt):
+  pass
+
+@win.event
 def on_draw():
-    window.clear()
-    label.draw()
+    win.clear()
+    img.blit(200, 100)
+    # spr.draw()
 
+pyglet.clock.schedule(update) 
 pyglet.app.run()
 
 
