@@ -3,7 +3,7 @@ import pyglet
 win= pyglet.window.Window()
 
 # Create a sprite so the game can keep track of coordinates
-img= pyglet.image.load('assets/gfx/Ninja-spritesheet.png')
+img= pyglet.image.load('assets/gfx/Old hero.png')
 smol_img = img.get_region(x = 72, y = 130, width = 24, height = 25)
 spr = pyglet.sprite.Sprite(smol_img, x = 200, y = 200)
 
