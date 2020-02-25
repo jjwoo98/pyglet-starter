@@ -22,6 +22,7 @@ def update(dt):
     if keys[pyglet.window.key.DOWN]:
         spr.y -= 5
 
+ 
 @win.event
 def on_draw():
     win.clear()
