@@ -1,31 +1,21 @@
-"""
- Simple snake example.
- 
- Sample Python/Pygame Programs
- Simpson College Computer Science
- http://programarcadegames.com/
- http://simpson.edu/computer-science/
- 
-"""
- 
 import pyglet
- 
+
 # --- Globals ---
 # Colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
- 
+
 # Set the width and height of each snake segment
 segment_width = 15
 segment_height = 15
 # Margin between each segment
 segment_margin = 3
- 
+
 # Set initial speed
 x_change = segment_width + segment_margin
 y_change = 0
- 
- 
+
+
 class Segment(pyglet.sprite.Sprite):
     """ Class to represent one segment of the snake. """
     # -- Methods
@@ -42,18 +32,18 @@ class Segment(pyglet.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
- 
+
 # Call this function so the Pygame library can initialize itself
 pyglet.init()
- 
+
 # Create an 800x600 sized screen
 screen = pyglet.display.set_mode([800, 600])
- 
+
 # Set the title of the window
 pyglet.display.set_caption('Snake Example')
- 
+
 allspriteslist = pyglet.sprite.Group()
- 
+
 # Create an initial snake
 snake_segments = []
 for i in range(15):
@@ -62,17 +52,17 @@ for i in range(15):
     segment = Segment(x, y)
     snake_segments.append(segment)
     allspriteslist.add(segment)
- 
- 
+
+
 clock = pyglet.time.Clock()
 done = False
- 
+
 while not done:
- 
+
     for event in pyglet.event.get():
         if event.type == pyglet.QUIT:
             done = True
- 
+
         # Set the speed based on the key pressed
         # We want the speed to be enough that we move a full
         # segment, plus the margin.
@@ -89,31 +79,31 @@ while not done:
             if event.key == pyglet.K_DOWN:
                 x_change = 0
                 y_change = (segment_height + segment_margin)
- 
+
     # Get rid of last segment of the snake
     # .pop() command removes last item in list
     old_segment = snake_segments.pop()
     allspriteslist.remove(old_segment)
- 
+
     # Figure out where new segment will be
     x = snake_segments[0].rect.x + x_change
     y = snake_segments[0].rect.y + y_change
     segment = Segment(x, y)
- 
+
     # Insert new segment into the list
     snake_segments.insert(0, segment)
     allspriteslist.add(segment)
- 
+
     # -- Draw everything
     # Clear screen
     screen.fill(BLACK)
- 
+
     allspriteslist.draw(screen)
- 
+
     # Flip screen
     pyglet.display.flip()
- 
+
     # Pause
     clock.tick(5)
- 
+
 pyglet.quit()
