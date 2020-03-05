@@ -106,4 +106,5 @@ while not done:
     # Pause
     clock.tick(5)
 
+
 pyglet.quit()
